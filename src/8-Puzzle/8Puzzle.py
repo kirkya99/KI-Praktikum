@@ -1,4 +1,4 @@
-from Breitensuche import breadth_search
+from BreadthFirstSearch import breadth_search
 
 if __name__ == '__main__':
     nodes = []
