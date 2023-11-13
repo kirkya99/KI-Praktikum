@@ -17,12 +17,10 @@ def target_reached(node, target):
 def descendants(node):
     child_nodes = []
     print(node[0][0], node[0][1], node[0][2])
-
     return child_nodes
 
 
 def append(new_nodes, child_nodes):
     for node in child_nodes:
         new_nodes.append(node)
-
     return new_nodes
