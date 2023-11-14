@@ -19,5 +19,3 @@ def append(nodes, new_nodes):
     for node in new_nodes:
         nodes.append(node)
     return nodes
-
-
