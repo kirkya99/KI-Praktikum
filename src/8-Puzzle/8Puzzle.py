@@ -1,7 +1,8 @@
 from BreadthFirstSearch import breadth_search
 
-Init_State = [[1, 2, 3], [4, 5, 0], [6, 7, 8]]
+#Init_State = [[1, 2, 3], [4, 5, 0], [6, 7, 8]]
 Final_State = [[1, 2, 3], [4, 5, 6], [7, 8, 0]]
+Init_State = [[1, 2, 3], [4, 5, 6], [7, 0, 8]]
 
 
 if __name__ == '__main__':
