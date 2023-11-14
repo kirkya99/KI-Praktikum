@@ -12,7 +12,62 @@ class Node:
     def descendants(self):
 
         if self.node[0][0] == 0:
-            print()
+            new_state = copy_node(self)
+            new_state[0][0], new_state[0][1] = self.node[0][1], self.node[0][0]
+            self.child_nodes.append(Node(new_state))
+            new_state = copy_node(self)
+            new_state[0][0], new_state[1][0] = self.node[1][0], self.node[0][0]
+            self.child_nodes.append(Node(new_state))
+        elif self.node[0][1] == 0:
+            new_state = copy_node(self)
+            new_state[0][1], new_state[0][0] = self.node[0][1], self.node[0][1]
+            self.child_nodes.append(Node(new_state))
+            new_state = copy_node(self)
+            new_state[0][1], new_state[1][1] = self.node[1][1], self.node[0][1]
+            self.child_nodes.append(Node(new_state))
+            new_state = copy_node(self)
+            new_state[0][1], new_state[0][2] = self.node[0][2], self.node[0][1]
+            self.child_nodes.append(Node(new_state))
+        elif self.node[0][2] == 0:
+            new_state = copy_node(self)
+            new_state[0][2], new_state[0][1] = self.node[0][1], self.node[0][2]
+            self.child_nodes.append(Node(new_state))
+            new_state = copy_node(self)
+            new_state[0][2], new_state[1][2] = self.node[1][2], self.node[0][2]
+            self.child_nodes.append(Node(new_state))
+        elif self.node[1][0] == 0:
+            new_state = copy_node(self)
+            new_state[1][0], new_state[0][1] = self.node[0][1], self.node[1][0]
+            self.child_nodes.append(Node(new_state))
+            new_state = copy_node(self)
+            new_state[1][0], new_state[1][1] = self.node[1][1], self.node[1][0]
+            self.child_nodes.append(Node(new_state))
+            new_state = copy_node(self)
+            new_state[1][0], new_state[2][0] = self.node[2][0], self.node[1][0]
+            self.child_nodes.append(Node(new_state))
+        elif self.node[1][1] == 0:
+            new_state = copy_node(self)
+            new_state[1][1], new_state[0][1] = self.node[0][1], self.node[1][1]
+            self.child_nodes.append(Node(new_state))
+            new_state = copy_node(self)
+            new_state[1][1], new_state[1][0] = self.node[1][0], self.node[1][1]
+            self.child_nodes.append(Node(new_state))
+            new_state = copy_node(self)
+            new_state[1][1], new_state[1][2] = self.node[1][2], self.node[1][1]
+            self.child_nodes.append(Node(new_state))
+            new_state = copy_node(self)
+            new_state[1][1], new_state[2][1] = self.node[2][1], self.node[1][1]
+            self.child_nodes.append(Node(new_state))
+        elif self.node[1][2] == 0:
+            new_state = copy_node(self)
+            new_state[1][2], new_state[0][2] = self.node[0][2], self.node[1][2]
+            self.child_nodes.append(Node(new_state))
+            new_state = copy_node(self)
+            new_state[1][2], new_state[1][1] = self.node[1][1], self.node[1][2]
+            self.child_nodes.append(Node(new_state))
+            new_state = copy_node(self)
+            new_state[1][2], new_state[2][2] = self.node[2][2], self.node[1][2]
+            self.child_nodes.append(Node(new_state))
         elif self.node[2][0] == 0:
             new_state = copy_node(self)
             new_state[2][0], new_state[1][0] = self.node[1][0], self.node[2][0]
@@ -20,7 +75,6 @@ class Node:
             new_state = copy_node(self)
             new_state[2][0], new_state[2][1] = self.node[2][1], self.node[2][0]
             self.child_nodes.append(Node(new_state))
-
         elif self.node[2][1] == 0:
             new_state = copy_node(self)
             new_state[2][1], new_state[2][0] = self.node[2][0], self.node[2][1]
@@ -31,7 +85,13 @@ class Node:
             new_state = copy_node(self)
             new_state[2][1], new_state[2][2] = self.node[2][2], self.node[2][1]
             self.child_nodes.append(Node(new_state))
-
+        elif self.node[2][2] == 0:
+            new_state = copy_node(self)
+            new_state[2][2], new_state[1][2] = self.node[1][2], self.node[2][2]
+            self.child_nodes.append(Node(new_state))
+            new_state = copy_node(self)
+            new_state[2][2], new_state[2][1] = self.node[2][1], self.node[2][2]
+            self.child_nodes.append(Node(new_state))
         return self.child_nodes
 
 
