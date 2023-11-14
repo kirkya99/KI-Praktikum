@@ -27,4 +27,3 @@ if __name__ == '__main__':
         print(res[1].node[1])
         print(res[1].node[2])
     print("--------------------")
-
