@@ -1,5 +1,5 @@
 from BreadthFirstSearch import breadth_search
-from Node import Node
+from src.Puzzle8.Node import Node
 
 # Init_State = [[1, 2, 3], [4, 5, 0], [6, 7, 8]]
 Final_State = [[1, 2, 3], [4, 5, 6], [7, 8, 0]]
