@@ -103,11 +103,11 @@ class Node:
         return copy.deepcopy(self.node)
 
     def first_node(self):
-        return self.child_nodes[0]
+        return copy.deepcopy(self.child_nodes[0])
 
     def remaining_nodes(self):
         node_list = []
-        length = len(self.child_nodes)
-        for i in range(1, length):
-            node_list.append(self.child_nodes[i])
+        for node in self.child_nodes:
+            if node != self.child_nodes[0]:
+                node_list.append(node)
         return node_list
