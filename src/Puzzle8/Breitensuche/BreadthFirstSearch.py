@@ -1,3 +1,6 @@
+from src.Puzzle8.Helper import target_reached
+
+
 def breadth_search(node_list, target):
 
     new_nodes = []
@@ -9,10 +12,6 @@ def breadth_search(node_list, target):
         return breadth_search(new_nodes, target)
     else:
         return "keine Lösung"
-
-
-def target_reached(node, target):
-    return node.node == target
 
 
 def append(nodes, new_nodes):

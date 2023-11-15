@@ -10,6 +10,12 @@ class Node:
     child_nodes = []
 
     def descendants(self):
+
+        print(self.node[0])
+        print(self.node[1])
+        print(self.node[2])
+        print()
+
         if self.node[0][0] == 0:
             new_state = self.copy_node()
             new_state[0][0], new_state[0][1] = self.node[0][1], self.node[0][0]
