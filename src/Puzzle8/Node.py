@@ -10,12 +10,6 @@ class Node:
     child_nodes = []
 
     def descendants(self):
-
-        print(self.node[0])
-        print(self.node[1])
-        print(self.node[2])
-        print()
-
         if self.node[0][0] == 0:
             new_state = self.copy_node()
             new_state[0][0], new_state[0][1] = self.node[0][1], self.node[0][0]
@@ -25,7 +19,7 @@ class Node:
             self.child_nodes.append(Node(new_state))
         elif self.node[0][1] == 0:
             new_state = self.copy_node()
-            new_state[0][1], new_state[0][0] = self.node[0][1], self.node[0][1]
+            new_state[0][1], new_state[0][0] = self.node[0][0], self.node[0][1]
             self.child_nodes.append(Node(new_state))
             new_state = self.copy_node()
             new_state[0][1], new_state[1][1] = self.node[1][1], self.node[0][1]
@@ -42,7 +36,7 @@ class Node:
             self.child_nodes.append(Node(new_state))
         elif self.node[1][0] == 0:
             new_state = self.copy_node()
-            new_state[1][0], new_state[0][1] = self.node[0][1], self.node[1][0]
+            new_state[1][0], new_state[0][0] = self.node[0][0], self.node[1][0]
             self.child_nodes.append(Node(new_state))
             new_state = self.copy_node()
             new_state[1][0], new_state[1][1] = self.node[1][1], self.node[1][0]
@@ -97,6 +91,19 @@ class Node:
             new_state = self.copy_node()
             new_state[2][2], new_state[2][1] = self.node[2][1], self.node[2][2]
             self.child_nodes.append(Node(new_state))
+
+        print("Parent:")
+        print(self.node[0])
+        print(self.node[1])
+        print(self.node[2])
+        print()
+        print("Child nodes:")
+        for node in self.child_nodes:
+            print(node.node[0])
+            print(node.node[1])
+            print(node.node[2])
+            print()
+        print("--------------------")
         return self.child_nodes
 
     def copy_node(self):
