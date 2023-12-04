@@ -30,4 +30,5 @@ def target_found(node, target):
 
 
 def sort_nodes(descendants, node_list):
-    return True
+    unsorted_list = descendants + node_list
+    sorted_list = sorted()
