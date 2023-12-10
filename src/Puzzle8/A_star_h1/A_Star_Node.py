@@ -15,100 +15,19 @@ class AStarNode:
     f_s = g_s + h_s
 
     def descendants(self):
-        if self.node[0][0] == 0:
-            new_state = self.copy_node()
-            new_state[0][0], new_state[0][1] = self.node[0][1], self.node[0][0]
-            self.child_nodes.append(AStarNode(new_state, self))
-            new_state = self.copy_node()
-            new_state[0][0], new_state[1][0] = self.node[1][0], self.node[0][0]
-            self.child_nodes.append(AStarNode(new_state, self))
-        elif self.node[0][1] == 0:
-            new_state = self.copy_node()
-            new_state[0][1], new_state[0][0] = self.node[0][0], self.node[0][1]
-            self.child_nodes.append(AStarNode(new_state, self))
-            new_state = self.copy_node()
-            new_state[0][1], new_state[1][1] = self.node[1][1], self.node[0][1]
-            self.child_nodes.append(AStarNode(new_state, self))
-            new_state = self.copy_node()
-            new_state[0][1], new_state[0][2] = self.node[0][2], self.node[0][1]
-            self.child_nodes.append(AStarNode(new_state, self))
-        elif self.node[0][2] == 0:
-            new_state = self.copy_node()
-            new_state[0][2], new_state[0][1] = self.node[0][1], self.node[0][2]
-            self.child_nodes.append(AStarNode(new_state, self))
-            new_state = self.copy_node()
-            new_state[0][2], new_state[1][2] = self.node[1][2], self.node[0][2]
-            self.child_nodes.append(AStarNode(new_state, self))
-        elif self.node[1][0] == 0:
-            new_state = self.copy_node()
-            new_state[1][0], new_state[0][0] = self.node[0][0], self.node[1][0]
-            self.child_nodes.append(AStarNode(new_state, self))
-            new_state = self.copy_node()
-            new_state[1][0], new_state[1][1] = self.node[1][1], self.node[1][0]
-            self.child_nodes.append(AStarNode(new_state, self))
-            new_state = self.copy_node()
-            new_state[1][0], new_state[2][0] = self.node[2][0], self.node[1][0]
-            self.child_nodes.append(AStarNode(new_state, self))
-        elif self.node[1][1] == 0:
-            new_state = self.copy_node()
-            new_state[1][1], new_state[0][1] = self.node[0][1], self.node[1][1]
-            self.child_nodes.append(AStarNode(new_state, self))
-            new_state = self.copy_node()
-            new_state[1][1], new_state[1][0] = self.node[1][0], self.node[1][1]
-            self.child_nodes.append(AStarNode(new_state, self))
-            new_state = self.copy_node()
-            new_state[1][1], new_state[1][2] = self.node[1][2], self.node[1][1]
-            self.child_nodes.append(AStarNode(new_state, self))
-            new_state = self.copy_node()
-            new_state[1][1], new_state[2][1] = self.node[2][1], self.node[1][1]
-            self.child_nodes.append(AStarNode(new_state, self))
-        elif self.node[1][2] == 0:
-            new_state = self.copy_node()
-            new_state[1][2], new_state[0][2] = self.node[0][2], self.node[1][2]
-            self.child_nodes.append(AStarNode(new_state, self))
-            new_state = self.copy_node()
-            new_state[1][2], new_state[1][1] = self.node[1][1], self.node[1][2]
-            self.child_nodes.append(AStarNode(new_state, self))
-            new_state = self.copy_node()
-            new_state[1][2], new_state[2][2] = self.node[2][2], self.node[1][2]
-            self.child_nodes.append(AStarNode(new_state, self))
-        elif self.node[2][0] == 0:
-            new_state = self.copy_node()
-            new_state[2][0], new_state[1][0] = self.node[1][0], self.node[2][0]
-            self.child_nodes.append(AStarNode(new_state, self))
-            new_state = self.copy_node()
-            new_state[2][0], new_state[2][1] = self.node[2][1], self.node[2][0]
-            self.child_nodes.append(AStarNode(new_state, self))
-        elif self.node[2][1] == 0:
-            new_state = self.copy_node()
-            new_state[2][1], new_state[2][0] = self.node[2][0], self.node[2][1]
-            self.child_nodes.append(AStarNode(new_state, self))
-            new_state = self.copy_node()
-            new_state[2][1], new_state[1][1] = self.node[1][1], self.node[2][1]
-            self.child_nodes.append(AStarNode(new_state, self))
-            new_state = self.copy_node()
-            new_state[2][1], new_state[2][2] = self.node[2][2], self.node[2][1]
-            self.child_nodes.append(AStarNode(new_state, self))
-        elif self.node[2][2] == 0:
-            new_state = self.copy_node()
-            new_state[2][2], new_state[1][2] = self.node[1][2], self.node[2][2]
-            self.child_nodes.append(AStarNode(new_state, self))
-            new_state = self.copy_node()
-            new_state[2][2], new_state[2][1] = self.node[2][1], self.node[2][2]
-            self.child_nodes.append(AStarNode(new_state, self))
+        zero_row, zero_col = self.find_zero_position()
+        directions = [(0, 1), (0, -1), (1, 0), (-1, 0)]
 
-        # print("Node:")
-        # print(self.node[0])
-        # print(self.node[1])
-        # print(self.node[2])
-        # print()
-        # print("Child nodes:")
-        # for node in self.child_nodes:
-        #     print(node.node[0])
-        #     print(node.node[1])
-        #     print(node.node[2])
-        #     print()
-        # print("--------------------")
+        for direction in directions:
+            new_row, new_col = zero_row + direction[0], zero_col + direction[1]
+
+            if 0 <= new_row < 3 and 0 <= new_col < 3:
+                new_state = self.copy_node()
+                new_state[zero_row][zero_col], new_state[new_row][new_col] = (new_state[new_row][new_col],
+                                                                              new_state[zero_row][zero_col])
+
+                self.child_nodes.append(AStarNode(new_state, self))
+
         return self.child_nodes
 
     def copy_node(self):
@@ -131,8 +50,8 @@ class AStarNode:
     def h_1_heuristic(self):
         number = 1
         counter_wrong_location = 0
-        for x in range(0,2):
-            for y in range(0,2):
+        for x in range(0, 2):
+            for y in range(0, 2):
                 if counter_wrong_location == 8:
                     self.h_s = deepcopy(counter_wrong_location)
                 elif self.node[x][y] != number:
@@ -147,6 +66,12 @@ class AStarNode:
             p_2 = return_position(goal, i)
             manhattan_distance += calc_manhattan_distance(p_1, p_2)
         return 0
+
+    def find_zero_position(self):
+        for i, row in enumerate(self.node):
+            for j, value in enumerate(row):
+                if value == 0:
+                    return i, j
 
 
 def return_position(node, val_to_find):

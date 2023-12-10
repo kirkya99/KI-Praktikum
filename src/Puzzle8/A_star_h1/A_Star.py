@@ -1,5 +1,5 @@
 from copy import deepcopy
-from A_Star_Node import Node
+from A_Star_Node import AStarNode
 
 
 def heuristic_search(start, target):
@@ -21,7 +21,7 @@ def first(node_list):
 def rest(node_list):
     new_node_list = []
     for node_index in range(1, len(node_list)):
-        new_node_list.append(node_list(node_index))
+        new_node_list.append(node_list[node_index])
     return new_node_list
 
 
@@ -31,5 +31,5 @@ def target_found(node, target):
 
 def sort_nodes(descendants, node_list):
     unsorted_list = descendants + node_list
-    sorted_list = sorted(unsorted_list, key=lambda node: node)
+    sorted_list = sorted(unsorted_list, key=lambda node: node.node)
     return sorted_list
