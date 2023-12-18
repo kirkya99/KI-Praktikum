@@ -1,5 +1,5 @@
 from A_Star import heuristic_search
-from src.Puzzle8.Node import Node
+from A_Star_Node import AStarNode
 
 # Init_State = [[1, 2, 3], [4, 5, 0], [6, 7, 8]]
 Final_State = [[1, 2, 3], [4, 5, 6], [7, 8, 0]]
@@ -9,7 +9,7 @@ Init_State = [[1, 0, 3], [4, 2, 6], [7, 5, 8]]
 
 
 if __name__ == '__main__':
-    node = Node(Init_State)
+    node = AStarNode(Init_State)
     res = heuristic_search(node, Final_State)
 
     print("--------------------")

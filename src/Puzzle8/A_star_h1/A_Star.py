@@ -1,4 +1,3 @@
-from copy import deepcopy
 from A_Star_Node import AStarNode
 
 
@@ -7,35 +6,17 @@ def heuristic_search(start, target):
     while True:
         if len(node_list) == 0:
             return "Keine Lösung"
-        node = first(node_list)
-        node_list = rest(node_list)
+        node = node_list.pop(0)
         if target_found(node, target):
             return "Lösung gefunden", node
-        node_list = sort_nodes(node.descendants(), node_list)
-
-
-def first(node_list):
-    return node_list[0]
-
-
-def rest(node_list):
-    new_node_list = []
-    for node_index in range(1, len(node_list)):
-        new_node_list.append(node_list[node_index])
-    return new_node_list
+        node_list.extend(node.descendants())
+        node_list = sort_nodes(node_list)
 
 
 def target_found(node, target):
     return node == target
 
 
-def sort_nodes(descendants, node_list):
-    unsorted_list = []
-    for node in descendants:
-        unsorted_list.append(deepcopy(node))
-        print(node.node)
-    for node in node_list:
-        unsorted_list.append(deepcopy(node))
-        print(node.node)
-    sorted_list = sorted(unsorted_list, key=lambda element: node.node)
-    return sorted_list
+def sort_nodes(node_list):
+    node_list.sort(key=lambda element: element.node)
+    return node_list

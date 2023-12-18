@@ -2,8 +2,19 @@ from copy import deepcopy
 
 
 class AStarNode:
-    def __init__(self, node, previous):
+    def __init__(self, node, previous=None):
+        if previous is not None:
+            self.initialize_with_two_params(node, previous)
+        else:
+            self.initialize_with_one_param(node)
+
+    def initialize_with_two_params(self, node, previous):
         self.g_s = previous.f_s
+        self.h_s = self.heuristic()
+        self.node = node
+        self.child_nodes = []
+
+    def initialize_with_one_param(self, node):
         self.h_s = self.heuristic()
         self.node = node
         self.child_nodes = []
@@ -50,8 +61,8 @@ class AStarNode:
     def h_1_heuristic(self):
         number = 1
         counter_wrong_location = 0
-        for x in range(0, 2):
-            for y in range(0, 2):
+        for x in range(3):
+            for y in range(3):
                 if counter_wrong_location == 8:
                     self.h_s = deepcopy(counter_wrong_location)
                 elif self.node[x][y] != number:
@@ -65,7 +76,7 @@ class AStarNode:
             p_1 = return_position(self.node, i)
             p_2 = return_position(goal, i)
             manhattan_distance += calc_manhattan_distance(p_1, p_2)
-        return 0
+        return manhattan_distance
 
     def find_zero_position(self):
         for i, row in enumerate(self.node):
@@ -84,4 +95,4 @@ def return_position(node, val_to_find):
 
 
 def calc_manhattan_distance(p_1, p_2):
-    return abs(p_1[0]-p_2[0]) - abs(p_1[1]-p_2[1])
+    return abs(p_1[0] - p_2[0]) - abs(p_1[1] - p_2[1])
