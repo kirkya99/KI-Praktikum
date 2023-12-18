@@ -5,7 +5,7 @@ from A_Star_Node import AStarNode
 def heuristic_search(start, target):
     node_list = [start]
     while True:
-        if node_list is None:
+        if len(node_list) == 0:
             return "Keine Lösung"
         node = first(node_list)
         node_list = rest(node_list)
@@ -30,6 +30,12 @@ def target_found(node, target):
 
 
 def sort_nodes(descendants, node_list):
-    unsorted_list = descendants + node_list
-    sorted_list = sorted(unsorted_list, key=lambda node: node.node)
+    unsorted_list = []
+    for node in descendants:
+        unsorted_list.append(deepcopy(node))
+        print(node.node)
+    for node in node_list:
+        unsorted_list.append(deepcopy(node))
+        print(node.node)
+    sorted_list = sorted(unsorted_list, key=lambda element: node.node)
     return sorted_list
