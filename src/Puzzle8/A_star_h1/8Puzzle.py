@@ -2,7 +2,7 @@ from A_Star import heuristic_search
 from A_Star_Node import AStarNode
 
 Final_State = [[1, 2, 3], [4, 5, 6], [7, 8, 0]]
-Init_State = [[1, 0, 3], [4, 2, 6], [7, 5, 8]]
+Init_State = [[2, 0, 4], [6, 7, 1], [8, 5, 3]]
 
 
 if __name__ == '__main__':
