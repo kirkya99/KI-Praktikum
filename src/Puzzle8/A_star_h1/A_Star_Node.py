@@ -9,13 +9,13 @@ class AStarNode:
             self.initialize_with_one_param(node)
 
     def initialize_with_two_params(self, node, previous):
-        self.g_s = previous.f_s
-        self.h_s = self.heuristic()
+        self.f_s = previous.f_s + 1
+        self.h_s = deepcopy(self.heuristic())
         self.node = node
         self.child_nodes = []
 
     def initialize_with_one_param(self, node):
-        self.h_s = self.heuristic()
+        self.h_s = deepcopy(self.heuristic())
         self.node = node
         self.child_nodes = []
 
@@ -23,7 +23,7 @@ class AStarNode:
     child_nodes = []
     g_s = 0.0
     h_s = 0.0
-    f_s = g_s + h_s
+    f_s = 0
 
     def descendants(self):
         zero_row, zero_col = self.find_zero_position()
@@ -55,14 +55,14 @@ class AStarNode:
         return node_list
 
     def heuristic(self):
-        # return self.h_1_heuristic()
-        return self.h_2_heuristic()
+        return self.h_1_heuristic()
+        # return self.h_2_heuristic()
 
     def h_1_heuristic(self):
         number = 1
         counter_wrong_location = 0
-        for x in range(3):
-            for y in range(3):
+        for x in range(len(self.node)):
+            for y in range(len(self.node[x])):
                 if self.node[x][y] != number:
                     counter_wrong_location += 1
         return counter_wrong_location
