@@ -3,7 +3,8 @@ from A_Star_Node import AStarNode
 
 # Init_State = [[1, 2, 3], [4, 5, 0], [6, 7, 8]]
 Final_State = [[1, 2, 3], [4, 5, 6], [7, 8, 0]]
-Init_State = [[1, 0, 3], [4, 2, 6], [7, 5, 8]]
+Init_State = [[1, 2, 3], [4, 5, 6], [7, 8, 0]]
+# Init_State = [[1, 0, 3], [4, 2, 6], [7, 5, 8]]
 # Init_State = [[1, 2, 3], [4, 5, 6], [0, 7, 8]]
 # Init_State = [[0, 1, 3], [4, 2, 6], [7, 5, 8]]
 

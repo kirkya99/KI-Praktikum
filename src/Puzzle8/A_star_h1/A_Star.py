@@ -1,10 +1,9 @@
-from A_Star_Node import AStarNode
 
 
 def heuristic_search(start, target):
     node_list = [start]
     while True:
-        if len(node_list) == 0:
+        if len(node_list) == 0 or node_list is None:
             return "Keine Lösung"
         node = node_list.pop(0)
         if target_found(node, target):
