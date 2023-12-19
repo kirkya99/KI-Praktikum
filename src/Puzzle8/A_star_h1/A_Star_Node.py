@@ -63,19 +63,17 @@ class AStarNode:
         counter_wrong_location = 0
         for x in range(3):
             for y in range(3):
-                if counter_wrong_location == 8:
-                    self.h_s = deepcopy(counter_wrong_location)
-                elif self.node[x][y] != number:
+                if self.node[x][y] != number:
                     counter_wrong_location += 1
-        self.h_s = deepcopy(counter_wrong_location)
+        return counter_wrong_location
 
     def h_2_heuristic(self):
         goal = [[1, 2, 3], [4, 5, 6], [7, 8, 0]]
         manhattan_distance = 0
-        for i in range(9):
-            p_1 = return_position(self.node, i)
-            p_2 = return_position(goal, i)
-            manhattan_distance += calc_manhattan_distance(p_1, p_2)
+        for searched_number in range(9):
+            p_1 = self.return_position(self.node, searched_number)
+            p_2 = self.return_position(goal, searched_number)
+            manhattan_distance += self.calc_manhattan_distance(p_1, p_2)
         return manhattan_distance
 
     def find_zero_position(self):
@@ -84,15 +82,15 @@ class AStarNode:
                 if value == 0:
                     return i, j
 
+    @staticmethod
+    def return_position(node, val_to_find):
+        position = [0, 0]
+        for y in range(len(node)):
+            for x in (range(y)):
+                if node[x][y] == val_to_find:
+                    position = [x, y]
+        return position
 
-def return_position(node, val_to_find):
-    position = [0, 0]
-    for y in range(len(node)):
-        for x in (range(y)):
-            if node[x][y] == val_to_find:
-                position = [x, y]
-    return position
-
-
-def calc_manhattan_distance(p_1, p_2):
-    return abs(p_1[0] - p_2[0]) - abs(p_1[1] - p_2[1])
+    @staticmethod
+    def calc_manhattan_distance(p_1, p_2):
+        return abs(p_1[0] - p_2[0]) + abs(p_1[1] - p_2[1])
