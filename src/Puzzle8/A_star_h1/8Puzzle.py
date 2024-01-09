@@ -16,8 +16,7 @@ if __name__ == '__main__':
     print(Init_State[2])
     print("--------------------")
     print("--------------------")
-    print("A*:")
-    print(res[0])
+    print("A*: \n%s" % res[0])
     if res[1] is not None:
         print(res[1].node[0])
         print(res[1].node[1])

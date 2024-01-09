@@ -61,8 +61,8 @@ class AStarNode:
     def h_1_heuristic(self):
         number = 1
         counter_wrong_location = 0
-        for x in range(len(self.node)):
-            for y in range(len(self.node[x])):
+        for x in enumerate(self.node):
+            for y in enumerate(self.node[x]):
                 if self.node[x][y] != number:
                     counter_wrong_location += 1
         return counter_wrong_location
